@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app_test/bloc/data_bloc.dart';
-import 'package:food_app_test/ui/conponents/category_item.dart';
-import 'package:food_app_test/ui/conponents/promo_timer.dart';
+import 'package:food_app_test/ui/components/category_item.dart';
+import 'package:food_app_test/ui/components/promo_timer.dart';
 import 'package:food_app_test/utils/constants.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -91,7 +91,7 @@ class MenuScreen extends StatelessWidget {
       ),
       bottomNavigationBar: SizedBox(
         width: screenWidth,
-        height: 60,
+        height: screenHeight / 13.68,
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

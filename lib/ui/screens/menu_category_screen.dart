@@ -41,7 +41,7 @@ class MenuCategoryScreen extends StatelessWidget {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
-                                'https://storage.yandexcloud.net/cdn-staging/cache/70/3a/703a436d2b8a7425a18d8b2b0b7910fb.jpg',
+                                'https://storage.yandexcloud.net/cdn-staging/cache/51/d4/51d423094a32e41cdb6951b611339c82.jpg',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -54,31 +54,44 @@ class MenuCategoryScreen extends StatelessWidget {
                                     fontSize: 14, fontWeight: FontWeight.w500),
                               ),
                             ),
-                            Positioned(
+                            Positioned.fill(
                                 bottom: 10,
                                 left: 10,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      '1000 ₽',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: null,
-                                      style: ElevatedButton.styleFrom(
-                                        foregroundColor: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
+                                right: 10,
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        '1000 ₽',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w900),
                                       ),
-                                      child: const Text("+"),
-                                    ),
-                                  ],
+                                      ElevatedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: const Color.fromRGBO(
+                                              251, 81, 30, 1),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0),
+                                          ),
+                                        ),
+                                        child: const SizedBox(
+                                            width: 40,
+                                            child: Text(
+                                              "+",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18),
+                                            )),
+                                      ),
+                                    ],
+                                  ),
                                 ))
                           ],
                         ),

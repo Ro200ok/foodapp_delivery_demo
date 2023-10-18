@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_app_test/bloc/data_bloc.dart';
 import 'package:food_app_test/repositories/products_repository.dart';
-import 'package:food_app_test/ui/conponents/category_item.dart';
-import 'package:food_app_test/ui/conponents/promo_timer.dart';
-import 'package:food_app_test/ui/screens/menu_category.dart';
+import 'package:food_app_test/ui/components/category_item.dart';
+import 'package:food_app_test/ui/components/promo_timer.dart';
+import 'package:food_app_test/ui/screens/cart_screen.dart';
+import 'package:food_app_test/ui/screens/menu_category_screen.dart';
 import 'package:food_app_test/ui/screens/menu_screen.dart';
 import 'package:food_app_test/utils/constants.dart';
 
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MenuCategoryScreen(),
+      home: const CartScreen(),
     );
   }
 }
