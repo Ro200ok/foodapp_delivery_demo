@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app_test/bloc/data_bloc.dart';
+import 'package:food_app_test/router/app_paths.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';
 import 'package:food_app_test/utils/constants.dart';
+import 'package:go_router/go_router.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -70,6 +72,8 @@ class MenuScreen extends StatelessWidget {
                           final category = state.data[index];
                           return InkWell(
                             onTap: () {
+                              context.goNamed(AppPaths.menuCategory,
+                                  extra: category);
                               log('tap tap');
                             },
                             child: CategoryItem(
@@ -87,17 +91,6 @@ class MenuScreen extends StatelessWidget {
               );
             }
           },
-        ),
-      ),
-      bottomNavigationBar: SizedBox(
-        width: screenWidth,
-        height: screenHeight / 13.68,
-        child: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(onPressed: null, child: Text('Еда')),
-            TextButton(onPressed: null, child: Text('Корзина'))
-          ],
         ),
       ),
     );

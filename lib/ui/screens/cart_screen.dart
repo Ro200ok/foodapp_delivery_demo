@@ -90,17 +90,6 @@ class CartScreen extends StatelessWidget {
             );
           },
           itemCount: 20),
-      bottomNavigationBar: SizedBox(
-        width: screenWidth,
-        height: screenHeight / 13.68,
-        child: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(onPressed: null, child: Text('Еда')),
-            TextButton(onPressed: null, child: Text('Корзина'))
-          ],
-        ),
-      ),
     );
   }
 }

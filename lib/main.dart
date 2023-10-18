@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_app_test/bloc/data_bloc.dart';
 import 'package:food_app_test/repositories/products_repository.dart';
+import 'package:food_app_test/router/router.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';
 import 'package:food_app_test/ui/screens/cart_screen.dart';
@@ -36,13 +37,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'FoodApp Demo',
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const CartScreen(),
+      routerConfig: goRouter,
     );
   }
 }

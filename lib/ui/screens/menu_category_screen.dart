@@ -102,17 +102,6 @@ class MenuCategoryScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        width: screenWidth,
-        height: 60,
-        child: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(onPressed: null, child: Text('Еда')),
-            TextButton(onPressed: null, child: Text('Корзина'))
-          ],
-        ),
-      ),
     );
   }
 }
