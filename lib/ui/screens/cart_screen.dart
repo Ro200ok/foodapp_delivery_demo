@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
 import 'package:food_app_test/ui/components/custom_app_bar.dart';
 
 final _textButtonstyle = TextButton.styleFrom(
@@ -17,78 +19,136 @@ class CartScreen extends StatelessWidget {
     log('$screenHeight screenHeight');
     return Scaffold(
       appBar: const CustomAppBar(title: 'Корзина'),
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            return Stack(
-              children: [
-                ListTile(
-                  title: Padding(
-                    padding:
-                        EdgeInsets.only(bottom: 20, right: screenWidth / 3.92),
-                    child: const Text('title'),
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        'price',
-                        maxLines: 4,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                      SizedBox(
-                        width: screenWidth / 3.2,
-                        child: const SizedBox(
-                          child: Text('weight'),
-                        ),
-                      )
-                    ],
-                  ),
-                  leading: Image.network(
-                      'https://storage.yandexcloud.net/cdn-staging/cache/51/d4/51d423094a32e41cdb6951b611339c82.jpg'),
-                ),
-                Positioned(
-                  bottom: 0,
-                  right: 20,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          color: Color.fromRGBO(241, 244, 249, 1)),
-                      width: screenWidth / 3.2,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          if (state is CartIsLoading) {
+            return const CircularProgressIndicator(
+              strokeWidth: .5,
+            );
+          } else if (state is CartIsLoaded) {
+            return state.cart.products.isNotEmpty
+                ? ListView.separated(
+                    itemBuilder: (context, index) {
+                      final product = state.cart
+                          .itemQuantity(state.cart.products)
+                          .keys
+                          .elementAt(index);
+                      final productCount = state.cart
+                          .itemQuantity(state.cart.products)
+                          .entries
+                          .elementAt(index)
+                          .value;
+
+                      return Stack(
                         children: [
-                          TextButton(
-                              style: _textButtonstyle,
-                              onPressed: () {},
-                              child: const Icon(
-                                Icons.remove,
-                                size: 20,
-                              )),
-                          const Text('3'),
-                          TextButton(
-                              style: _textButtonstyle,
-                              onPressed: () {},
-                              child: const Icon(
-                                Icons.add,
-                                size: 20,
-                              ))
+                          ListTile(
+                            title: Padding(
+                              padding: EdgeInsets.only(
+                                  bottom: 20, right: screenWidth / 3.92),
+                              child: Text(product.name ?? ''),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  ('${product.cost.toString()} ₽'),
+                                  maxLines: 4,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                SizedBox(
+                                  width: screenWidth / 3.2,
+                                  child: SizedBox(
+                                    child: Text(product.sizes.toString()),
+                                  ),
+                                )
+                              ],
+                            ),
+                            leading: Image.network(product.image_url ?? ''),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            right: 20,
+                            child: ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(241, 244, 249, 1)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    TextButton(
+                                        style: _textButtonstyle,
+                                        onPressed: () {
+                                          context
+                                              .read<CartBloc>()
+                                              .add(RemoveProduct(product));
+                                        },
+                                        child: const Icon(
+                                          Icons.remove,
+                                          size: 20,
+                                        )),
+                                    Text(productCount.toString()),
+                                    TextButton(
+                                        style: _textButtonstyle,
+                                        onPressed: () {
+                                          context
+                                              .read<CartBloc>()
+                                              .add(AddProduct(product));
+                                        },
+                                        child: const Icon(
+                                          Icons.add,
+                                          size: 20,
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
-                      ),
+                      );
+                    },
+                    separatorBuilder: (_, __) {
+                      return const Divider(
+                        color: Color.fromRGBO(241, 244, 249, 1),
+                      );
+                    },
+                    itemCount: state.cart
+                        .itemQuantity(state.cart.products)
+                        .keys
+                        .length)
+                : Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.shopping_cart,
+                          size: 200,
+                          color: Colors.grey[200],
+                        ),
+                        const Expanded(
+                            flex: 0,
+                            child: Text(
+                              'Корзина пустая',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                  color: Colors.grey),
+                            ))
+                      ],
                     ),
-                  ),
-                ),
-              ],
+                  );
+          } else {
+            return const Center(
+              child: Text('Ошибка'),
             );
-          },
-          separatorBuilder: (_, __) {
-            return const Divider(
-              color: Color.fromRGBO(241, 244, 249, 1),
-            );
-          },
-          itemCount: 20),
+          }
+        },
+      ),
     );
   }
 }

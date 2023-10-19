@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_app_test/bloc/data_bloc.dart';
+import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
+import 'package:food_app_test/blocs/data_bloc.dart';
+
+import 'package:food_app_test/repositories/hive_storage_repository.dart';
 import 'package:food_app_test/repositories/products_repository.dart';
 import 'package:food_app_test/router/router.dart';
 
@@ -10,16 +13,24 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
-  runApp(RepositoryProvider(
-    create: (context) => ProductsRepository(),
-    child: BlocProvider(
-      create: (context) {
-        return DataBloc(
-          RepositoryProvider.of<ProductsRepository>(context),
-        )..add(
-            LoadDataEvent(),
-          );
-      },
+  runApp(MultiRepositoryProvider(
+    providers: [
+      RepositoryProvider<ProductsRepository>(
+          create: (context) => ProductsRepository()),
+      RepositoryProvider<HiveStorageRepository>(
+          create: (context) => HiveStorageRepository()),
+    ],
+    child: MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => DataBloc(
+            RepositoryProvider.of<ProductsRepository>(context),
+          )..add(
+              LoadDataEvent(),
+            ),
+        ),
+        BlocProvider(create: (context) => CartBloc()..add(CartInit()))
+      ],
       child: const MyApp(),
     ),
   ));

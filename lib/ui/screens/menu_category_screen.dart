@@ -1,12 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:food_app_test/models/category/category.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
 import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/router/app_paths.dart';
 import 'package:food_app_test/ui/components/custom_app_bar.dart';
 import 'package:food_app_test/ui/components/red_rounded_button.dart';
-import 'package:go_router/go_router.dart';
 
 class MenuCategoryScreen extends StatelessWidget {
   const MenuCategoryScreen({super.key, required this.products});
@@ -80,6 +79,10 @@ class MenuCategoryScreen extends StatelessWidget {
                                         fontSize: 20),
                                   ),
                                   RedRoundedButton(
+                                    callback: () {
+                                      final cartBloc = context.read<CartBloc>();
+                                      cartBloc.add(AddProduct(product!));
+                                    },
                                     label: 'Хочу!',
                                     width: screenWidth / 7.84,
                                     fontSize: 16,
@@ -177,7 +180,12 @@ class MenuCategoryScreen extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.w900),
                                         ),
-                                        const RedRoundedButton(
+                                        RedRoundedButton(
+                                          callback: () {
+                                            context
+                                                .read<CartBloc>()
+                                                .add(AddProduct(product!));
+                                          },
                                           label: '+',
                                         )
                                       ],

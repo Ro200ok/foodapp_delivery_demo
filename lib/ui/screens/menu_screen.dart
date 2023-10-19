@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/bloc/data_bloc.dart';
+import 'package:food_app_test/blocs/data_bloc.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/router/app_paths.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
@@ -32,15 +32,18 @@ class MenuScreen extends StatelessWidget {
               );
             } else if (state is LoadedDataState) {
               return Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
+                  SizedBox(
+                    width: screenWidth,
+                    height: screenHeight / 6.84,
                     child: Stack(
-                      fit: StackFit.passthrough,
+                      fit: StackFit.expand,
                       children: [
                         Image.asset(
                           AppConstants.promoPizzaPath,
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                         ),
                         Positioned(
                           top: screenHeight / 40,
@@ -82,9 +85,13 @@ class MenuScreen extends StatelessWidget {
                   )
                 ],
               );
+            } else if (state is ErrorDataState) {
+              return Center(
+                child: Text(state.exeption.toString()),
+              );
             } else {
               return const Center(
-                child: Text('Ошибка инициализации'),
+                child: Text('Что-то пошло не так'),
               );
             }
           },
