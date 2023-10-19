@@ -6,6 +6,7 @@ import 'package:food_app_test/bloc/data_bloc.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/router/app_paths.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
+import 'package:food_app_test/ui/components/custom_app_bar.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';
 import 'package:food_app_test/utils/constants.dart';
 import 'package:go_router/go_router.dart';
@@ -18,12 +19,7 @@ class MenuScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Категории',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'Категории'),
       body: Padding(
         padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
         child: BlocBuilder<DataBloc, DataState>(

@@ -1,12 +1,9 @@
 // private navigators
 import 'package:flutter/material.dart';
-import 'package:food_app_test/models/category/category.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/router/app_paths.dart';
-import 'package:food_app_test/ui/components/custom_page_route_builder.dart';
 import 'package:food_app_test/ui/components/scaffold_nested_navigation.dart';
 import 'package:food_app_test/ui/screens/cart_screen.dart';
-import 'package:food_app_test/ui/screens/details_product_screen.dart';
 import 'package:food_app_test/ui/screens/menu_category_screen.dart';
 import 'package:go_router/go_router.dart';
 

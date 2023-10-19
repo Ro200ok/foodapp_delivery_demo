@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:food_app_test/ui/components/custom_app_bar.dart';
 
 final _textButtonstyle = TextButton.styleFrom(
     padding: EdgeInsets.zero, minimumSize: const Size(10, 10));
@@ -15,9 +16,7 @@ class CartScreen extends StatelessWidget {
     log('$screenWidth screenWidth');
     log('$screenHeight screenHeight');
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Корзина'),
-      ),
+      appBar: const CustomAppBar(title: 'Корзина'),
       body: ListView.separated(
           itemBuilder: (context, index) {
             return Stack(
