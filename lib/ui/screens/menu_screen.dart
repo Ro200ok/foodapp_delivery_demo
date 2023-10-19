@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app_test/bloc/data_bloc.dart';
+import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/router/app_paths.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';
@@ -73,7 +74,7 @@ class MenuScreen extends StatelessWidget {
                           return InkWell(
                             onTap: () {
                               context.goNamed(AppPaths.menuCategory,
-                                  extra: category);
+                                  extra: category.products as List<Product>);
                               log('tap tap');
                             },
                             child: CategoryItem(
