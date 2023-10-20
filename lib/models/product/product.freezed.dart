@@ -20,12 +20,19 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
+  @HiveField(1)
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get name => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get image_url => throw _privateConstructorUsedError;
+  @HiveField(4)
   int? get cost => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get sizes => throw _privateConstructorUsedError;
+  @HiveField(6)
   int? get categoryId => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,13 +46,13 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {int? id,
-      String? name,
-      String? image_url,
-      int? cost,
-      String? sizes,
-      int? categoryId,
-      String? description});
+      {@HiveField(1) int? id,
+      @HiveField(2) String? name,
+      @HiveField(3) String? image_url,
+      @HiveField(4) int? cost,
+      @HiveField(5) String? sizes,
+      @HiveField(6) int? categoryId,
+      @HiveField(7) String? description});
 }
 
 /// @nodoc
@@ -110,13 +117,13 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? name,
-      String? image_url,
-      int? cost,
-      String? sizes,
-      int? categoryId,
-      String? description});
+      {@HiveField(1) int? id,
+      @HiveField(2) String? name,
+      @HiveField(3) String? image_url,
+      @HiveField(4) int? cost,
+      @HiveField(5) String? sizes,
+      @HiveField(6) int? categoryId,
+      @HiveField(7) String? description});
 }
 
 /// @nodoc
@@ -173,26 +180,40 @@ class __$$ProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
-  const _$ProductImpl(this.id, this.name, this.image_url, this.cost, this.sizes,
-      this.categoryId, this.description);
+class _$ProductImpl extends _Product with DiagnosticableTreeMixin {
+  _$ProductImpl(
+      @HiveField(1) this.id,
+      @HiveField(2) this.name,
+      @HiveField(3) this.image_url,
+      @HiveField(4) this.cost,
+      @HiveField(5) this.sizes,
+      @HiveField(6) this.categoryId,
+      @HiveField(7) this.description)
+      : super._();
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
 
   @override
+  @HiveField(1)
   final int? id;
   @override
+  @HiveField(2)
   final String? name;
   @override
+  @HiveField(3)
   final String? image_url;
   @override
+  @HiveField(4)
   final int? cost;
   @override
+  @HiveField(5)
   final String? sizes;
   @override
+  @HiveField(6)
   final int? categoryId;
   @override
+  @HiveField(7)
   final String? description;
 
   @override
@@ -250,31 +271,39 @@ class _$ProductImpl with DiagnosticableTreeMixin implements _Product {
   }
 }
 
-abstract class _Product implements Product {
-  const factory _Product(
-      final int? id,
-      final String? name,
-      final String? image_url,
-      final int? cost,
-      final String? sizes,
-      final int? categoryId,
-      final String? description) = _$ProductImpl;
+abstract class _Product extends Product {
+  factory _Product(
+      @HiveField(1) final int? id,
+      @HiveField(2) final String? name,
+      @HiveField(3) final String? image_url,
+      @HiveField(4) final int? cost,
+      @HiveField(5) final String? sizes,
+      @HiveField(6) final int? categoryId,
+      @HiveField(7) final String? description) = _$ProductImpl;
+  _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
   @override
+  @HiveField(1)
   int? get id;
   @override
+  @HiveField(2)
   String? get name;
   @override
+  @HiveField(3)
   String? get image_url;
   @override
+  @HiveField(4)
   int? get cost;
   @override
+  @HiveField(5)
   String? get sizes;
   @override
+  @HiveField(6)
   int? get categoryId;
   @override
+  @HiveField(7)
   String? get description;
   @override
   @JsonKey(ignore: true)
