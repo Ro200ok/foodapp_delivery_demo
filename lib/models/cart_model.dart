@@ -20,11 +20,9 @@ class Cart extends Equatable {
   List<Object?> get props => [products];
 
   Map itemQuantity(products) {
-    // ignore: prefer_collection_literals
-    var quantity = Map();
+    var quantity = {};
 
     for (var item in products) {
-      log('$item    <<<item');
       if (!quantity.containsKey(item)) {
         quantity[item] = 1;
       } else {

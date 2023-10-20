@@ -66,7 +66,10 @@ class CartScreen extends StatelessWidget {
                                 )
                               ],
                             ),
-                            leading: Image.network(product.image_url ?? ''),
+                            leading: Image.network(
+                              product.image_url ?? '',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           Positioned(
                             bottom: 0,
@@ -131,14 +134,15 @@ class CartScreen extends StatelessWidget {
                           color: Colors.grey[200],
                         ),
                         const Expanded(
-                            flex: 0,
-                            child: Text(
-                              'Корзина пустая',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18,
-                                  color: Colors.grey),
-                            ))
+                          flex: 0,
+                          child: Text(
+                            'Корзина пустая',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18,
+                                color: Colors.grey),
+                          ),
+                        ),
                       ],
                     ),
                   );
