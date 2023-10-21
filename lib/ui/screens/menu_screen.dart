@@ -7,6 +7,7 @@ import 'package:food_app_test/blocs/data_bloc.dart';
 import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/router/app_paths.dart';
+import 'package:food_app_test/ui/components/animated_tap_widget.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
 import 'package:food_app_test/ui/components/custom_app_bar.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';
@@ -79,16 +80,9 @@ class MenuScreen extends StatelessWidget {
                                 crossAxisCount: 2),
                         itemBuilder: (contex, index) {
                           final category = state.data[index];
-                          return InkWell(
-                            onTap: () {
-                              context.goNamed(AppPaths.menuCategory,
-                                  extra: category.products as List<Product>);
-                              log('tap tap');
-                            },
-                            child: CategoryItem(
-                              category: category,
-                              key: UniqueKey(),
-                            ),
+                          return CategoryItem(
+                            category: category,
+                            key: UniqueKey(),
                           );
                         }),
                   )
