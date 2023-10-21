@@ -25,14 +25,12 @@ class _ScaffoldWithNestedNavigationState
   late AnimationController _animationController;
   late Animation<double> _animation;
   late bool canAnimate;
-  int currentIndex = 1;
 
   _animateTotalCount(double total) {
     if (!canAnimate) return;
     _animation = Tween<double>(begin: 0, end: total).animate(
         CurvedAnimation(parent: _animationController, curve: Curves.bounceIn));
     _animationController.forward(from: 0.0);
-    canAnimate = true;
   }
 
   @override
@@ -51,7 +49,6 @@ class _ScaffoldWithNestedNavigationState
   }
 
   void _goBranch(int index) {
-    currentIndex = index;
     widget.navigationShell.goBranch(
       index,
       initialLocation: index == widget.navigationShell.currentIndex,
@@ -65,13 +62,18 @@ class _ScaffoldWithNestedNavigationState
         bottomNavigationBar: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
             if (state is CartIsLoaded) {
-              _animateTotalCount(state.cart.subtotal);
+              if (state.canAnimate) {
+                _animateTotalCount(state.cart.subtotal);
+              }
               return AnimatedBuilder(
                   animation: _animation,
                   builder: (context, __) {
                     return BottomNavigationBar(
                         selectedItemColor: Colors.grey[800],
-                        onTap: _goBranch,
+                        onTap: (val) {
+                          state.canAnimate = false;
+                          _goBranch(val);
+                        },
                         currentIndex: widget.navigationShell.currentIndex,
                         items: [
                           BottomNavigationBarItem(
@@ -94,24 +96,5 @@ class _ScaffoldWithNestedNavigationState
             return const Row();
           },
         ));
-  }
-}
-
-class AnimatedCartBage extends StatefulWidget {
-  const AnimatedCartBage(
-      {super.key, required this.totalSum, required this.callback});
-
-  final double totalSum;
-  final Function(int) callback;
-
-  @override
-  State<AnimatedCartBage> createState() => _AnimatedCartBageState();
-}
-
-class _AnimatedCartBageState extends State<AnimatedCartBage>
-    with SingleTickerProviderStateMixin {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

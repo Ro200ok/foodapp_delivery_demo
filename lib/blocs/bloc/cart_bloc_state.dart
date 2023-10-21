@@ -11,8 +11,9 @@ class CartIsLoading extends CartState {
 
 class CartIsLoaded extends CartState {
   final Cart cart;
+  bool canAnimate;
 
-  const CartIsLoaded({required this.cart});
+  CartIsLoaded({required this.cart, this.canAnimate = true});
 
   @override
   List<Object> get props => [cart];
