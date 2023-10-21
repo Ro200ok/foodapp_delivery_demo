@@ -27,8 +27,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     emit(CartIsLoading());
     try {
       Box box = await _hiveLocalStorage.initBox();
-      List<Product> products = _hiveLocalStorage.loadProductsList(box);
-      await Future<void>.delayed(const Duration(seconds: 1));
+      List<Product> products =
+          _hiveLocalStorage.loadProductsList(box).values.toList();
+
       emit(CartIsLoaded(cart: Cart(products: products)));
     } catch (_) {}
   }
@@ -41,6 +42,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if (state is CartIsLoaded) {
       try {
         Box box = await _hiveLocalStorage.initBox();
+
         _hiveLocalStorage.addProductToBox(box, event.product);
         emit(
           CartIsLoaded(
