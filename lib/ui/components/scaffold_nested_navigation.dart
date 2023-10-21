@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
+import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 class ScaffoldWithNestedNavigation extends StatefulWidget {
@@ -72,11 +74,12 @@ class _ScaffoldWithNestedNavigationState
                         onTap: _goBranch,
                         currentIndex: widget.navigationShell.currentIndex,
                         items: [
-                          const BottomNavigationBarItem(
-                              label: 'Еда', icon: Icon(Icons.coffee)),
+                          BottomNavigationBarItem(
+                              label: LocaleKeys.food.tr(),
+                              icon: const Icon(Icons.coffee)),
                           BottomNavigationBarItem(
                               label: state.cart.products.isEmpty
-                                  ? 'Корзина'
+                                  ? LocaleKeys.cart.tr()
                                   : '${_animation.value.toStringAsFixed(0)} ₽',
                               icon: Icon(
                                 Icons.shopping_cart_sharp,

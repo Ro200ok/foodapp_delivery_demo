@@ -27,7 +27,7 @@ class HiveStorageRepository extends ItfLocalStorage {
   Future<void> addProductToBox(Box box, Product product) async {
     log('${product.hashCode}');
 
-    await box.put(product.id, product);
+    await box.put(product.hashCode, product);
   }
 
   @override

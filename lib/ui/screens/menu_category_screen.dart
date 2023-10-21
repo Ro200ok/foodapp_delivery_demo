@@ -1,11 +1,14 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
+import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/ui/components/custom_app_bar.dart';
 import 'package:food_app_test/ui/components/red_rounded_button.dart';
+import 'package:food_app_test/utils/helpers.dart';
 
 class MenuCategoryScreen extends StatelessWidget {
   const MenuCategoryScreen({super.key, required this.products});
@@ -114,7 +117,13 @@ class MenuCategoryScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Mеню Категории'),
+      appBar: AppBar(
+        actions: [Helpers().setLocale(context)],
+        title: Text(
+          LocaleKeys.menu_category.tr(),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
+      ),
       body: Container(
         decoration: BoxDecoration(color: Colors.grey[100]),
         child: Padding(

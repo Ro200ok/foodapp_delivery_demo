@@ -42,7 +42,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if (state is CartIsLoaded) {
       try {
         Box box = await _hiveLocalStorage.initBox();
-
         _hiveLocalStorage.addProductToBox(box, event.product);
         emit(
           CartIsLoaded(

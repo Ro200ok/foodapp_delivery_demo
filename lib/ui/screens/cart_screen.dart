@@ -1,9 +1,12 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
+import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:food_app_test/ui/components/custom_app_bar.dart';
+import 'package:food_app_test/utils/helpers.dart';
 
 final _textButtonstyle = TextButton.styleFrom(
     padding: EdgeInsets.zero, minimumSize: const Size(10, 10));
@@ -18,7 +21,13 @@ class CartScreen extends StatelessWidget {
     log('$screenWidth screenWidth');
     log('$screenHeight screenHeight');
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Корзина'),
+      appBar: AppBar(
+        actions: [Helpers().setLocale(context)],
+        title: Text(
+          LocaleKeys.cart.tr(),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        ),
+      ),
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           if (state is CartIsLoading) {
