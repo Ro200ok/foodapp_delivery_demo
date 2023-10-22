@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:food_app_test/models/category/category.dart';
 import 'package:food_app_test/utils/constants.dart';
 

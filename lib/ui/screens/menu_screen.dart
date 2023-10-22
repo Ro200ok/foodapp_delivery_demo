@@ -41,52 +41,55 @@ class MenuScreen extends StatelessWidget {
                 ),
               );
             } else if (state is LoadedDataState) {
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: screenWidth,
-                    height: screenHeight / 6.84,
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        Image.asset(
-                          AppConstants.promoPizzaPath,
-                          fit: BoxFit.cover,
-                        ),
-                        Positioned(
-                          top: screenHeight / 40,
-                          right: screenWidth / 39.2,
-                          child: const PromoTimer(),
-                        ),
-                      ],
+              return SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: screenWidth,
+                      height: screenHeight / 6.84,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.asset(
+                            AppConstants.promoPizzaPath,
+                            fit: BoxFit.cover,
+                          ),
+                          Positioned(
+                            top: screenHeight / 40,
+                            right: screenWidth / 39.2,
+                            child: const PromoTimer(),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const Divider(
-                    color: Colors.transparent,
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: screenWidth,
-                    height: screenHeight / 1.60,
-                    child: GridView.builder(
-                        itemCount: state.data.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisSpacing: 10,
-                                mainAxisSpacing: 10,
-                                childAspectRatio: 0.95,
-                                crossAxisCount: 2),
-                        itemBuilder: (contex, index) {
-                          final category = state.data[index];
-                          return CategoryItem(
-                            category: category,
-                            key: UniqueKey(),
-                          );
-                        }),
-                  )
-                ],
+                    const Divider(
+                      color: Colors.transparent,
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: screenWidth,
+                      height: screenHeight / 1.60,
+                      child: GridView.builder(
+                          itemCount: state.data.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  childAspectRatio: 0.95,
+                                  crossAxisCount: 2),
+                          itemBuilder: (contex, index) {
+                            final category = state.data[index];
+                            return CategoryItem(
+                              category: category,
+                              key: UniqueKey(),
+                            );
+                          }),
+                    )
+                  ],
+                ),
               );
             } else if (state is ErrorDataState) {
               return Center(

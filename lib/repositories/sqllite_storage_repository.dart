@@ -129,7 +129,6 @@ class ProductDb {
   }
 
   Future<int> insertProduct(Product product, {cart = false}) async {
-    // print(cart);
     Database db = await database;
     var result =
         await db.insert(cart ? cartTable : productTable, product.toJson());

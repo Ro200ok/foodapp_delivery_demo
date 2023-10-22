@@ -21,7 +21,6 @@ final goRouter = GoRouter(
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        log('${_rootNavigatorKey.currentState!.canPop()}  <<< canPop');
         return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
       },
       branches: [

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app_test/models/category/category.dart';
@@ -84,7 +85,7 @@ class _CategoryItemState extends State<CategoryItem>
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: Text(
-                            category.category_name ?? '',
+                            (category.category_name ?? '').tr(),
                             style: const TextStyle(
                                 fontWeight: FontWeight.w700, fontSize: 18),
                           ),

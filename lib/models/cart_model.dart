@@ -36,11 +36,5 @@ class Cart extends Equatable {
   double get subtotal => products.fold(
       0, (total, current) => total + (current.cost?.toInt() ?? 0));
 
-  double total(subtotal) {
-    return subtotal;
-  }
-
   String get subtotalString => subtotal.toStringAsFixed(2);
-
-  String get totalString => total(subtotal).toStringAsFixed(2);
 }
