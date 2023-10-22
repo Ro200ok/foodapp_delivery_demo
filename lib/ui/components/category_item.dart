@@ -45,6 +45,7 @@ class _CategoryItemState extends State<CategoryItem>
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     final category = widget.category;
     return AnimatedBuilder(
         animation: _animation,
@@ -67,7 +68,17 @@ class _CategoryItemState extends State<CategoryItem>
                   elevation: 4,
                   child: Column(
                     children: [
-                      CachedNetworkImage(imageUrl: category.image_url ?? ''),
+                      CachedNetworkImage(
+                        imageUrl: category.image_url ?? '',
+                        placeholder: (_, __) => SizedBox(
+                          height: screenHeight / 7.1,
+                          child: const Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: .5,
+                            ),
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Align(

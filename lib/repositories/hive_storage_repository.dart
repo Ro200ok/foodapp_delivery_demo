@@ -22,10 +22,12 @@ class HiveStorageRepository {
   }
 
   Future<void> addProductToBox(Box box, Product product) async {
-    await box.add(product);
+    await box.put(product.id, product);
   }
 
-  Future<void> removeProductFromBox(Box box, Product product) async {}
+  Future<void> removeProductFromBox(Box box, Product product) async {
+    await box.delete(product.id);
+  }
 
   Future<void> clearBox(Box box) async {
     await box.clear();

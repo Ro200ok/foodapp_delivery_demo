@@ -70,9 +70,9 @@ class _ScaffoldWithNestedNavigationState
                   builder: (context, __) {
                     return BottomNavigationBar(
                         selectedItemColor: Colors.grey[800],
-                        onTap: (val) {
+                        onTap: (i) {
                           state.canAnimate = false;
-                          _goBranch(val);
+                          _goBranch(i);
                         },
                         currentIndex: widget.navigationShell.currentIndex,
                         items: [

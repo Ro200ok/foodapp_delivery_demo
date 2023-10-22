@@ -163,10 +163,15 @@ class MenuCategoryScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                       child: CachedNetworkImage(
                                           fit: BoxFit.cover,
-                                          placeholder: (_, __) =>
-                                              const CircularProgressIndicator(
-                                                strokeWidth: .5,
-                                              ),
+                                          placeholder: (_, __) => SizedBox(
+                                              width: screenWidth,
+                                              height: screenHeight / 6.8,
+                                              child: const Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  strokeWidth: .5,
+                                                ),
+                                              )),
                                           imageUrl: (product?.image_url ?? '')),
                                     ),
                                     Container(

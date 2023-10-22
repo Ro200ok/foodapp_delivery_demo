@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
 
 class Helpers {
   Widget setLocale(BuildContext context) {
