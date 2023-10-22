@@ -8,6 +8,7 @@ import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/ui/components/plus_minus_button.dart';
 import 'package:food_app_test/ui/components/set_locale_button.dart';
 import 'package:food_app_test/utils/app_colors.dart';
+import 'package:food_app_test/utils/helper.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -16,7 +17,13 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [SetLocaleButton()],
+        actions: [
+          IconButton(
+              onPressed: () {
+                HelperLocale.setLocale(context);
+              },
+              icon: const Icon(Icons.language))
+        ],
         title: Text(
           LocaleKeys.cart.tr(),
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),

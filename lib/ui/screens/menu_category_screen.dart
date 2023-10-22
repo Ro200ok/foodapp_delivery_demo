@@ -9,6 +9,7 @@ import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/ui/components/details_product.dart';
 import 'package:food_app_test/ui/components/red_rounded_button.dart';
 import 'package:food_app_test/ui/components/set_locale_button.dart';
+import 'package:food_app_test/utils/helper.dart';
 
 class MenuCategoryScreen extends StatelessWidget {
   const MenuCategoryScreen({super.key, required this.products});
@@ -30,13 +31,20 @@ class MenuCategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [SetLocaleButton()],
+        actions: [
+          IconButton(
+            onPressed: () {
+              HelperLocale.setLocale(context);
+            },
+            icon: const Icon(Icons.language),
+          )
+        ],
         title: Text(
           LocaleKeys.menuCategory.tr(),
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
-      body: Container(
+      body: DecoratedBox(
         decoration: BoxDecoration(color: Colors.grey[100]),
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -76,12 +84,13 @@ class MenuCategoryScreen extends StatelessWidget {
                                           fit: BoxFit.cover,
                                           placeholder: (_, __) =>
                                               const SizedBox(
+                                                  height: 120,
                                                   child: Center(
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  strokeWidth: .5,
-                                                ),
-                                              )),
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      strokeWidth: .5,
+                                                    ),
+                                                  )),
                                           imageUrl: (product?.image_url ?? '')),
                                     ),
                                     Container(

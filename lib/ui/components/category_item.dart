@@ -1,16 +1,16 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:food_app_test/models/category/category.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/router/app_paths.dart';
 import 'package:go_router/go_router.dart';
 
 class CategoryItem extends StatefulWidget {
-  const CategoryItem({
-    super.key,
-    required this.category,
-  });
+  const CategoryItem({super.key, required this.category});
   final ProductsCategory category;
 
   @override
@@ -30,6 +30,16 @@ class _CategoryItemState extends State<CategoryItem>
           }
         });
 
+  Future<void> _animateAndNavigate(
+      BuildContext context, ProductsCategory category) async {
+    _controller.forward();
+    await Future.delayed(const Duration(milliseconds: 400));
+    if (context.mounted) {
+      context.goNamed(AppPaths.menuCategory,
+          extra: category.products as List<Product>);
+    }
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -39,19 +49,15 @@ class _CategoryItemState extends State<CategoryItem>
   @override
   Widget build(BuildContext context) {
     final category = widget.category;
+    final categorieName = category.category_name ?? '';
     return AnimatedBuilder(
         animation: _animation,
         builder: (context, widget) {
           return Transform.scale(
             scale: _animation.value,
             child: GestureDetector(
-              onTap: () async {
-                _controller.forward();
-                await Future.delayed(const Duration(milliseconds: 400));
-                if (context.mounted) {
-                  context.goNamed(AppPaths.menuCategory,
-                      extra: category.products as List<Product>);
-                }
+              onTap: () {
+                _animateAndNavigate(context, category);
               },
               child: Material(
                   shape: RoundedRectangleBorder(
@@ -74,13 +80,12 @@ class _CategoryItemState extends State<CategoryItem>
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Text(
-                            (category.category_name ?? '').tr(),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 18),
-                          ),
-                        ),
+                            alignment: Alignment.bottomLeft,
+                            child: Text(
+                              categorieName.tr(context: context),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w700, fontSize: 18),
+                            )),
                       )
                     ],
                   )),

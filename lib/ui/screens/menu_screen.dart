@@ -7,6 +7,7 @@ import 'package:food_app_test/ui/components/category_item.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';
 import 'package:food_app_test/ui/components/set_locale_button.dart';
 import 'package:food_app_test/utils/constants.dart';
+import 'package:food_app_test/utils/helper.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -15,7 +16,13 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [SetLocaleButton()],
+        actions: [
+          IconButton(
+              onPressed: () {
+                HelperLocale.setLocale(context);
+              },
+              icon: const Icon(Icons.language))
+        ],
         title: Text(
           LocaleKeys.categories.tr(),
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -71,9 +78,9 @@ class MenuScreen extends StatelessWidget {
                                 crossAxisCount: 2),
                         itemBuilder: (contex, index) {
                           final category = state.productsCategories[index];
+
                           return CategoryItem(
                             category: category,
-                            key: UniqueKey(),
                           );
                         }),
                   )
