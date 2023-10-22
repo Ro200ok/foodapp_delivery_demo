@@ -1,11 +1,7 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:food_app_test/models/category/category.dart';
-import 'package:dio/dio.dart';
 import 'package:food_app_test/repositories/products_repository.dart';
-import 'package:food_app_test/utils/constants.dart';
 
 part 'products_event.dart';
 part 'products_state.dart';

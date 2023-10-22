@@ -1,6 +1,3 @@
-// private navigators
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/router/app_paths.dart';

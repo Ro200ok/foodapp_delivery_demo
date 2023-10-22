@@ -1,13 +1,8 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:food_app_test/models/cart_model.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/repositories/hive_cart_repository.dart';
-import 'package:food_app_test/repositories/itf_products_datasource.dart';
-import 'package:food_app_test/repositories/sqllite_storage_repository.dart';
-import 'package:hive/hive.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

@@ -1,19 +1,12 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app_test/blocs/products_bloc.dart';
 import 'package:food_app_test/generated/locale_keys.g.dart';
-import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/router/app_paths.dart';
-import 'package:food_app_test/ui/components/animated_tap_widget.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
-import 'package:food_app_test/ui/components/custom_app_bar.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';
 import 'package:food_app_test/ui/components/set_locale_button.dart';
 import 'package:food_app_test/utils/constants.dart';
-import 'package:go_router/go_router.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
