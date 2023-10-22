@@ -21,22 +21,15 @@ class HiveStorageRepository {
     if (box.isEmpty) {
       return [];
     }
-    log('load box');
     List<Product> productList = [];
     for (var element in box.toMap().values.first) {
-      log(element.toString());
       productList.add(element as Product);
     }
 
     return productList;
   }
 
-  Future<void> addProductToBox(Box box, List<Product> product) async {
-    await box.clear();
-    await box.add(product);
-  }
-
-  Future<void> removeProductFromBox(Box box, List<Product> product) async {
+  Future<void> updateProductsBox(Box box, List<Product> product) async {
     await box.clear();
     await box.add(product);
   }
