@@ -6,8 +6,8 @@ part 'product.freezed.dart';
 part 'product.g.dart';
 
 @freezed
-@HiveType(typeId: 0, adapterName: 'ProductsAdapter')
-abstract class Product with _$Product {
+@HiveType(typeId: 0, adapterName: 'CartStorage')
+abstract class Product extends HiveObject with _$Product {
   Product._();
 
   factory Product(

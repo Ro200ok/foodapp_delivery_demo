@@ -13,20 +13,32 @@ class HiveStorageRepository {
   String boxName = 'cart';
 
   Future<Box> initBox() async {
-    Box box = await Hive.openBox<Product>(boxName);
+    Box box = await Hive.openBox(boxName);
     return box;
   }
 
   List<Product> loadProductsList(Box box) {
-    return box.values.toList() as List<Product>;
+    if (box.isEmpty) {
+      return [];
+    }
+    log('load box');
+    List<Product> productList = [];
+    for (var element in box.toMap().values.first) {
+      log(element.toString());
+      productList.add(element as Product);
+    }
+
+    return productList;
   }
 
-  Future<void> addProductToBox(Box box, Product product) async {
-    await box.put(product.id, product);
+  Future<void> addProductToBox(Box box, List<Product> product) async {
+    await box.clear();
+    await box.add(product);
   }
 
-  Future<void> removeProductFromBox(Box box, Product product) async {
-    await box.delete(product.id);
+  Future<void> removeProductFromBox(Box box, List<Product> product) async {
+    await box.clear();
+    await box.add(product);
   }
 
   Future<void> clearBox(Box box) async {

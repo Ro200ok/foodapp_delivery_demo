@@ -30,7 +30,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       Box box = await _hiveLocalStorage.initBox();
 
-      List<Product> products = _hiveLocalStorage.loadProductsList(box);
+      final products = _hiveLocalStorage.loadProductsList(box);
 
       emit(CartIsLoaded(cart: Cart(products: products)));
     } catch (_) {}
@@ -43,15 +43,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     final state = this.state;
     if (state is CartIsLoaded) {
       try {
+        final products = List.of(state.cart.products)..add(event.product);
+        log(products.toString());
         Box box = await _hiveLocalStorage.initBox();
-        _hiveLocalStorage.addProductToBox(box, event.product);
-        // await ProductDatabaseHelper.db.initializeDatabase();
-        // await ProductDatabaseHelper.db.insertProduct(event.product);
+        _hiveLocalStorage.addProductToBox(box, products);
 
         emit(
           CartIsLoaded(
             cart: state.cart.copyWith(
-              products: List.from(state.cart.products)..add(event.product),
+              products: products,
             ),
           ),
         );
@@ -66,12 +66,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     final state = this.state;
     if (state is CartIsLoaded) {
       try {
+        final products = List.of(state.cart.products)..remove(event.product);
         Box box = await _hiveLocalStorage.initBox();
-        _hiveLocalStorage.removeProductFromBox(box, event.product);
+        _hiveLocalStorage.removeProductFromBox(box, products);
         emit(
           CartIsLoaded(
             cart: state.cart.copyWith(
-              products: List.from(state.cart.products)..remove(event.product),
+              products: products,
             ),
           ),
         );

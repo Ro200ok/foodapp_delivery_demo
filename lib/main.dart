@@ -19,7 +19,7 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   await Hive.initFlutter();
-  Hive.registerAdapter(ProductsAdapter());
+  Hive.registerAdapter(CartStorage());
 
   runApp(
     EasyLocalization(

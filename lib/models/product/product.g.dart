@@ -6,7 +6,7 @@ part of 'product.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ProductsAdapter extends TypeAdapter<Product> {
+class CartStorage extends TypeAdapter<Product> {
   @override
   final int typeId = 0;
 
@@ -53,7 +53,7 @@ class ProductsAdapter extends TypeAdapter<Product> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ProductsAdapter &&
+      other is CartStorage &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
