@@ -4,15 +4,17 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:food_app_test/models/cart_model.dart';
 import 'package:food_app_test/models/product/product.dart';
+import 'package:food_app_test/repositories/hive_storage_repository.dart';
 import 'package:food_app_test/repositories/itf_local_storage.dart';
+import 'package:food_app_test/repositories/sqllite_storage_repository.dart';
 import 'package:hive/hive.dart';
 
 part 'cart_bloc_event.dart';
 part 'cart_bloc_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  final ItfLocalStorage _hiveLocalStorage;
-  CartBloc({required ItfLocalStorage hiveLocalStorage})
+  final HiveStorageRepository _hiveLocalStorage;
+  CartBloc({required HiveStorageRepository hiveLocalStorage})
       : _hiveLocalStorage = hiveLocalStorage,
         super(CartIsLoading()) {
     on<CartInit>(_onCartStart);
@@ -27,8 +29,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     emit(CartIsLoading());
     try {
       Box box = await _hiveLocalStorage.initBox();
-      List<Product> products =
-          _hiveLocalStorage.loadProductsList(box).values.toList();
+
+      List<Product> products = _hiveLocalStorage.loadProductsList(box);
 
       emit(CartIsLoaded(cart: Cart(products: products)));
     } catch (_) {}
@@ -43,6 +45,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       try {
         Box box = await _hiveLocalStorage.initBox();
         _hiveLocalStorage.addProductToBox(box, event.product);
+        // await ProductDatabaseHelper.db.initializeDatabase();
+        // await ProductDatabaseHelper.db.insertProduct(event.product);
+
         emit(
           CartIsLoaded(
             cart: state.cart.copyWith(

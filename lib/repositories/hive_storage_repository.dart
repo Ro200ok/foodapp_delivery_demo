@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:food_app_test/models/cart_model.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/repositories/itf_local_storage.dart';
 import 'package:hive/hive.dart';
@@ -8,34 +9,24 @@ import 'package:uuid/data.dart';
 import 'package:uuid/uuid.dart';
 import 'package:uuid/rng.dart';
 
-class HiveStorageRepository extends ItfLocalStorage {
+class HiveStorageRepository {
   String boxName = 'cart';
-  @override
+
   Future<Box> initBox() async {
-    Box box = await Hive.openBox(boxName);
+    Box box = await Hive.openBox<Product>(boxName);
     return box;
   }
 
-  @override
-  Map<int, Product> loadProductsList(Box box) {
-    return box
-        .toMap()
-        .map((key, value) => MapEntry(key as int, value as Product));
+  List<Product> loadProductsList(Box box) {
+    return box.values.toList() as List<Product>;
   }
 
-  @override
   Future<void> addProductToBox(Box box, Product product) async {
-    log('${product.hashCode}');
-
-    await box.put(product.id, product);
+    await box.add(product);
   }
 
-  @override
-  Future<void> removeProductFromBox(Box box, Product product) async {
-    await box.delete(product.id);
-  }
+  Future<void> removeProductFromBox(Box box, Product product) async {}
 
-  @override
   Future<void> clearBox(Box box) async {
     await box.clear();
   }

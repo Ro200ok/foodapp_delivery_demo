@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -137,7 +138,7 @@ class MenuCategoryScreen extends StatelessWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10,
-                            childAspectRatio: 0.8,
+                            childAspectRatio: 0.7,
                             crossAxisCount: 2),
                     itemBuilder: (contex, index) {
                       final product = products?[index];
@@ -150,57 +151,65 @@ class MenuCategoryScreen extends StatelessWidget {
                               color: Colors.white,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  product?.image_url ?? '',
-                                  fit: BoxFit.fill,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: CachedNetworkImage(
+                                          fit: BoxFit.cover,
+                                          placeholder: (_, __) =>
+                                              const CircularProgressIndicator(
+                                                strokeWidth: .5,
+                                              ),
+                                          imageUrl: (product?.image_url ?? '')),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      height: screenHeight / 10.26,
+                                      child: Text(
+                                        (product?.name ?? ''),
+                                        maxLines: 3,
+                                        textAlign: TextAlign.start,
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Positioned(
-                                  bottom: 70,
-                                  left: 10,
-                                  child: SizedBox(
-                                    width: screenWidth / 2.8,
-                                    child: Text(
-                                      product?.name ?? '',
-                                      maxLines: 2,
-                                      textAlign: TextAlign.start,
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  )),
-                              Positioned.fill(
-                                  bottom: 10,
-                                  left: 10,
-                                  right: 10,
-                                  child: Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          ('${product?.cost.toString()} ₽'),
-                                          style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w900),
-                                        ),
-                                        RedRoundedButton(
-                                          callback: () {
-                                            context
-                                                .read<CartBloc>()
-                                                .add(AddProduct(product!));
-                                          },
-                                          label: '+',
-                                        )
-                                      ],
-                                    ),
-                                  ))
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        ('${product?.cost.toString()} ₽'),
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      RedRoundedButton(
+                                        callback: () {
+                                          context
+                                              .read<CartBloc>()
+                                              .add(AddProduct(product!));
+                                        },
+                                        label: '+',
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -213,3 +222,19 @@ class MenuCategoryScreen extends StatelessWidget {
     );
   }
 }
+
+// Row(
+//                                     mainAxisAlignment =
+//                                         MainAxisAlignment.spaceBetween,
+//                                     children = [
+//                                     
+//                                       RedRoundedButton(
+//                                         callback: () {
+//                                           context
+//                                               .read<CartBloc>()
+//                                               .add(AddProduct(product!));
+//                                         },
+//                                         label: '+',
+//                                       )
+//                                     ],
+//                                   ),

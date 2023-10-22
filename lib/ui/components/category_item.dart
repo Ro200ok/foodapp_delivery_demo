@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app_test/models/category/category.dart';
@@ -60,26 +61,43 @@ class _CategoryItemState extends State<CategoryItem>
                 }
               },
               child: Material(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                elevation: 4,
-                child: Stack(
-                  children: [
-                    Image.network(category.image_url ?? ''),
-                    Positioned(
-                        bottom: 20,
-                        left: 20,
-                        child: Text(
-                          category.category_name ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w700, fontSize: 18),
-                        ))
-                  ],
-                ),
-              ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 4,
+                  child: Column(
+                    children: [
+                      CachedNetworkImage(imageUrl: category.image_url ?? ''),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            category.category_name ?? '',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 18),
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
             ),
           );
         });
   }
 }
+
+
+// Stack(
+//                   children: [
+//                     Image.network(category.image_url ?? ''),
+//                     Positioned(
+//                         bottom: 20,
+//                         left: 20,
+                  //        child: Text(
+                  //         category.category_name ?? '',
+                  //         style: const TextStyle(
+                  //             fontWeight: FontWeight.w700, fontSize: 18),
+                  //       ))
+                  // ],
+//                 ),
