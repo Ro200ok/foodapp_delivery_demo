@@ -26,7 +26,6 @@ final goRouter = GoRouter(
         StatefulShellBranch(
           navigatorKey: _shellNavigatorFoodKey,
           routes: [
-            /// top route inside branch
             GoRoute(
               path: AppPaths.menuScreen,
               pageBuilder: (context, state) => const NoTransitionPage(

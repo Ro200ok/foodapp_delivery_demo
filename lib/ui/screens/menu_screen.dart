@@ -80,8 +80,9 @@ class MenuScreen extends StatelessWidget {
                           final category = state.productsCategories[index];
 
                           return CategoryItem(
-                            category: category,
-                          );
+                              category: category,
+                              categoryName:
+                                  AppConstants.categoriesNames[index].tr());
                         }),
                   )
                 ],

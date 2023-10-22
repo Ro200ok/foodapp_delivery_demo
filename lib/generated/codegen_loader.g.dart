@@ -23,7 +23,8 @@ class CodegenLoader extends AssetLoader{
   "soups": "Супы",
   "salads": "Салаты",
   "desserts": "Десерты",
-  "wantit": "Хочу!"
+  "wantit": "Хочу!",
+  "cartIsEmpty": "Корзина пустая"
 };
 static const Map<String,dynamic> en = {
   "food": "Food",
@@ -34,7 +35,8 @@ static const Map<String,dynamic> en = {
   "soups": "Soups",
   "salads": "Salads",
   "desserts": "Desserts",
-  "wantit": "I want it!"
+  "wantit": "I want it!",
+  "cartIsEmpty": "Cart is empty"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru, "en": en};
 }

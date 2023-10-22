@@ -7,5 +7,6 @@
 "soups": "Soups",
 "salads": "Salads",
 "desserts": "Desserts",
-"wantit": "I want it!"
+"wantit": "I want it!",
+"cartIsEmpty": "Cart is empty"
 }

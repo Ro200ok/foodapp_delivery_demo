@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +8,10 @@ import 'package:food_app_test/router/app_paths.dart';
 import 'package:go_router/go_router.dart';
 
 class CategoryItem extends StatefulWidget {
-  const CategoryItem({super.key, required this.category});
+  const CategoryItem(
+      {super.key, required this.category, required this.categoryName});
   final ProductsCategory category;
+  final String categoryName;
 
   @override
   State<CategoryItem> createState() => _CategoryItemState();
@@ -49,7 +49,8 @@ class _CategoryItemState extends State<CategoryItem>
   @override
   Widget build(BuildContext context) {
     final category = widget.category;
-    final categorieName = category.category_name ?? '';
+    // final categorieName = category.category_name ?? '';
+    final categoryName = widget.categoryName;
     return AnimatedBuilder(
         animation: _animation,
         builder: (context, widget) {
@@ -82,7 +83,7 @@ class _CategoryItemState extends State<CategoryItem>
                         child: Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(
-                              categorieName.tr(context: context),
+                              categoryName,
                               style: const TextStyle(
                                   fontWeight: FontWeight.w700, fontSize: 18),
                             )),

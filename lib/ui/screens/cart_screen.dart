@@ -101,11 +101,11 @@ class CartScreen extends StatelessWidget {
                 },
               );
             } else {
-              return const Center(
+              return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.shopping_cart,
                       size: 200,
                       color: AppColors.lightGrey,
@@ -113,8 +113,8 @@ class CartScreen extends StatelessWidget {
                     Expanded(
                       flex: 0,
                       child: Text(
-                        'Корзина пустая',
-                        style: TextStyle(
+                        LocaleKeys.cartIsEmpty.tr(),
+                        style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 18,
                             color: Colors.grey),

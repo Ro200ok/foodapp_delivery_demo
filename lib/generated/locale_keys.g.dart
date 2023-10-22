@@ -10,5 +10,6 @@ abstract class  LocaleKeys {
   static const salads = 'salads';
   static const desserts = 'desserts';
   static const wantit = 'wantit';
+  static const cartIsEmpty = 'cartIsEmpty';
 
 }
