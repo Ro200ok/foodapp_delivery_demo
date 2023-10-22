@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
+import 'package:food_app_test/blocs/bloc/cart_bloc.dart';
 import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,7 +26,7 @@ class _ScaffoldWithNestedNavigationState
   late Animation<double> _animation;
   late bool canAnimate;
 
-  _animateTotalCount(double total) {
+  void _animateTotalCount(double total) {
     if (!canAnimate) return;
     _animation = Tween<double>(begin: 0, end: total).animate(
         CurvedAnimation(parent: _animationController, curve: Curves.bounceIn));
@@ -59,12 +59,16 @@ class _ScaffoldWithNestedNavigationState
   Widget build(BuildContext context) {
     return Scaffold(
         body: widget.navigationShell,
-        bottomNavigationBar: BlocBuilder<CartBloc, CartState>(
-          builder: (context, state) {
-            if (state is CartIsLoaded) {
-              if (state.canAnimate) {
-                _animateTotalCount(state.cart.subtotal);
-              }
+        bottomNavigationBar: BlocListener<CartBloc, CartState>(
+          listenWhen: (previous, current) => current is CartIsLoaded,
+          listener: (context, state) {
+            if (state is CartIsLoaded && state.canAnimate) {
+              _animateTotalCount(state.cart.subtotal);
+            }
+          },
+          child: BlocBuilder<CartBloc, CartState>(
+            builder: (context, state) {
+              if (state is! CartIsLoaded) return const SizedBox();
               return AnimatedBuilder(
                   animation: _animation,
                   builder: (context, __) {
@@ -77,24 +81,29 @@ class _ScaffoldWithNestedNavigationState
                         currentIndex: widget.navigationShell.currentIndex,
                         items: [
                           BottomNavigationBarItem(
-                              label: LocaleKeys.food.tr(),
-                              icon: const Icon(Icons.coffee)),
-                          BottomNavigationBarItem(
-                              label: state.cart.products.isEmpty
-                                  ? LocaleKeys.cart.tr()
-                                  : '${_animation.value.toStringAsFixed(0)} ₽',
-                              icon: Icon(
-                                Icons.shopping_cart_sharp,
-                                color: state.cart.products.isEmpty
-                                    ? Colors.grey[700]
-                                    : Colors.green,
-                              ))
+                            label: LocaleKeys.food.tr(),
+                            icon: const Icon(Icons.coffee),
+                          ),
+                          state.cart.products.isEmpty
+                              ? BottomNavigationBarItem(
+                                  icon: Icon(
+                                    Icons.shopping_cart_sharp,
+                                    color: Colors.grey[700],
+                                  ),
+                                  label: LocaleKeys.cart.tr(),
+                                )
+                              : BottomNavigationBarItem(
+                                  label:
+                                      '${_animation.value.toStringAsFixed(0)} ₽',
+                                  icon: const Icon(
+                                    Icons.shopping_cart_sharp,
+                                    color: Colors.green,
+                                  ),
+                                ),
                         ]);
                   });
-            }
-
-            return const Row();
-          },
+            },
+          ),
         ));
   }
 }

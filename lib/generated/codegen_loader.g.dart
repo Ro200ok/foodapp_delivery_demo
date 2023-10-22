@@ -18,17 +18,23 @@ class CodegenLoader extends AssetLoader{
   "food": "Еда",
   "cart": "Корзина",
   "categories": "Категории",
-  "menu_category": "Меню категории",
+  "menuCategory": "Меню категории",
   "susi": "Суши",
   "soups": "Супы",
   "salads": "Салаты",
-  "desserts": "Десерты"
+  "desserts": "Десерты",
+  "wantit": "Хочу!"
 };
 static const Map<String,dynamic> en = {
   "food": "Food",
   "cart": "Cart",
   "categories": "Categories",
-  "menu_category": "Menu categoriy"
+  "menuCategory": "Menu categoriy",
+  "susi": "Susi",
+  "soups": "Soups",
+  "salads": "Salads",
+  "desserts": "Desserts",
+  "wantit": "I want it!"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru, "en": en};
 }

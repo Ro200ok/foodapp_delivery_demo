@@ -9,7 +9,7 @@ class RedRoundedButton extends StatelessWidget {
       required this.label,
       required this.callback,
       this.width = 40,
-      this.fontSize = 18});
+      this.fontSize = 16});
   final String label;
   final double width;
   final double fontSize;

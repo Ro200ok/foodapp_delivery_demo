@@ -10,15 +10,8 @@ class AnimatedTapWidget extends StatefulWidget {
 
 class _AnimatedTapWidget extends State<AnimatedTapWidget>
     with TickerProviderStateMixin {
-  late AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-        duration: const Duration(milliseconds: 700), vsync: this);
-  }
+  late final _controller = AnimationController(
+      duration: const Duration(milliseconds: 700), vsync: this);
 
   @override
   void dispose() {

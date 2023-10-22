@@ -6,9 +6,6 @@ class PromoTimer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return TweenAnimationBuilder<Duration>(
         duration: const Duration(minutes: 10),
         tween: Tween(begin: const Duration(minutes: 10), end: Duration.zero),
@@ -21,8 +18,8 @@ class PromoTimer extends StatelessWidget {
           final minutesString = '$minutes'.padLeft(2, '0');
           final secondsString = '$seconds'.padLeft(2, '0');
           return Container(
-            width: screenWidth / 5.6,
-            height: screenHeight / 32.84,
+            width: 80,
+            height: 25,
             decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(20))),

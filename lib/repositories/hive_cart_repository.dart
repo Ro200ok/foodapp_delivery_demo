@@ -1,18 +1,15 @@
 import 'dart:developer';
 import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/repositories/itf_local_storage.dart';
+import 'package:food_app_test/repositories/itf_products_datasource.dart';
 import 'package:hive/hive.dart';
 
-class HiveStorageRepository extends ItfLocalStorage {
+class HiveCartRepository extends ItfProductsDataSource {
   String boxName = 'cart';
   @override
-  Future<Box> initBox() async {
-    Box box = await Hive.openBox(boxName);
-    return box;
-  }
+  Future<Box> init() => Hive.openBox(boxName);
 
   @override
-  List<Product> loadProductsList(Box box) {
+  List<Product> loadCart(Box box) {
     if (box.isEmpty) {
       return [];
     }
@@ -25,13 +22,13 @@ class HiveStorageRepository extends ItfLocalStorage {
   }
 
   @override
-  Future<void> updateProductsBox(Box box, List<Product> products) async {
+  Future<void> updateCart(Box box, List<Product> products) async {
     await box.clear();
     await box.add(products);
   }
 
   @override
-  Future<void> clearBox(Box box) async {
+  Future<void> clearCart(Box box) async {
     await box.clear();
   }
 }

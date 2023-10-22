@@ -19,7 +19,7 @@ class Cart extends Equatable {
   @override
   List<Object?> get props => [products];
 
-  Map itemQuantity(products) {
+  Map itemQuantity(List<Product> products) {
     var quantity = {};
 
     for (var item in products) {

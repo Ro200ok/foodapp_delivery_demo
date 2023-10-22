@@ -12,8 +12,10 @@ import 'package:go_router/go_router.dart';
 import '../ui/screens/menu_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shellA');
-final _shellNavigatorBKey = GlobalKey<NavigatorState>(debugLabel: 'shellB');
+final _shellNavigatorFoodKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shellFood');
+final _shellNavigatorCartKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shellCart');
 
 final goRouter = GoRouter(
   initialLocation: AppPaths.menuScreen,
@@ -25,7 +27,7 @@ final goRouter = GoRouter(
       },
       branches: [
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorAKey,
+          navigatorKey: _shellNavigatorFoodKey,
           routes: [
             /// top route inside branch
             GoRoute(
@@ -52,7 +54,7 @@ final goRouter = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorBKey,
+          navigatorKey: _shellNavigatorCartKey,
           routes: [
             GoRoute(
               path: AppPaths.cartScreen,

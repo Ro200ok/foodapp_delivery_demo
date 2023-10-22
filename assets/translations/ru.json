@@ -2,10 +2,11 @@
     "food": "Еда",
     "cart": "Корзина",
     "categories": "Категории",
-    "menu_category": "Меню категории",
+    "menuCategory": "Меню категории",
     "susi": "Суши",
     "soups": "Супы",
     "salads": "Салаты",
-    "desserts": "Десерты"
+    "desserts": "Десерты",
+    "wantit": "Хочу!"
     
 }

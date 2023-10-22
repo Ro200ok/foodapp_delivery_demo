@@ -21,22 +21,16 @@ class CategoryItem extends StatefulWidget {
 
 class _CategoryItemState extends State<CategoryItem>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  @override
-  void initState() {
-    super.initState();
+  late final _controller = AnimationController(
+      duration: const Duration(milliseconds: 200), vsync: this);
 
-    _controller = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this);
-
-    _animation = Tween<double>(begin: 1.0, end: 1.1).animate(_controller)
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          _controller.reverse();
-        }
-      });
-  }
+  late final _animation =
+      Tween<double>(begin: 1.0, end: 1.1).animate(_controller)
+        ..addStatusListener((status) {
+          if (status == AnimationStatus.completed) {
+            _controller.reverse();
+          }
+        });
 
   @override
   void dispose() {
@@ -46,7 +40,6 @@ class _CategoryItemState extends State<CategoryItem>
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     final category = widget.category;
     return AnimatedBuilder(
         animation: _animation,
@@ -71,9 +64,9 @@ class _CategoryItemState extends State<CategoryItem>
                     children: [
                       CachedNetworkImage(
                         imageUrl: category.image_url ?? '',
-                        placeholder: (_, __) => SizedBox(
-                          height: screenHeight / 7.1,
-                          child: const Center(
+                        placeholder: (_, __) => const SizedBox(
+                          height: 115,
+                          child: Center(
                             child: CircularProgressIndicator(
                               strokeWidth: .5,
                             ),
@@ -98,18 +91,3 @@ class _CategoryItemState extends State<CategoryItem>
         });
   }
 }
-
-
-// Stack(
-//                   children: [
-//                     Image.network(category.image_url ?? ''),
-//                     Positioned(
-//                         bottom: 20,
-//                         left: 20,
-                  //        child: Text(
-                  //         category.category_name ?? '',
-                  //         style: const TextStyle(
-                  //             fontWeight: FontWeight.w700, fontSize: 18),
-                  //       ))
-                  // ],
-//                 ),

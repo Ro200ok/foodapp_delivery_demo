@@ -1,6 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app_test/utils/helpers.dart';
+import 'package:food_app_test/ui/components/set_locale_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key, required this.title});
@@ -8,7 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(actions: [Helpers().setLocale(context)], title: title);
+    return AppBar(actions: const [SetLocaleButton()], title: title);
   }
 
   @override

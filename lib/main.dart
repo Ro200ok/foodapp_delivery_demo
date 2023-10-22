@@ -2,12 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_app_test/blocs/bloc/cart_bloc_bloc.dart';
-import 'package:food_app_test/blocs/data_bloc.dart';
+import 'package:food_app_test/blocs/bloc/cart_bloc.dart';
+import 'package:food_app_test/blocs/products_bloc.dart';
 import 'package:food_app_test/generated/codegen_loader.g.dart';
 import 'package:food_app_test/models/product/product.dart';
 
-import 'package:food_app_test/repositories/hive_storage_repository.dart';
+import 'package:food_app_test/repositories/hive_cart_repository.dart';
 import 'package:food_app_test/repositories/products_repository.dart';
 import 'package:food_app_test/router/router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -39,13 +39,13 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider<ProductsRepository>(
             create: (context) => ProductsRepository()),
-        RepositoryProvider<HiveStorageRepository>(
-            create: (context) => HiveStorageRepository()),
+        RepositoryProvider<HiveCartRepository>(
+            create: (context) => HiveCartRepository()),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => DataBloc(
+            create: (context) => ProductsBloc(
               RepositoryProvider.of<ProductsRepository>(context),
             )..add(
                 LoadDataEvent(),
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(
               create: (context) => CartBloc(
                   hiveLocalStorage:
-                      RepositoryProvider.of<HiveStorageRepository>(context))
+                      RepositoryProvider.of<HiveCartRepository>(context))
                 ..add(CartInit()))
         ],
         child: MaterialApp.router(
