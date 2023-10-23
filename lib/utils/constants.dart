@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:food_app_test/generated/locale_keys.g.dart';
 
 abstract class AppConstants {

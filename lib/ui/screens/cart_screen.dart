@@ -6,7 +6,6 @@ import 'package:food_app_test/blocs/bloc/cart_bloc.dart';
 import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/ui/components/plus_minus_button.dart';
-import 'package:food_app_test/ui/components/set_locale_button.dart';
 import 'package:food_app_test/utils/app_colors.dart';
 import 'package:food_app_test/utils/helper.dart';
 
