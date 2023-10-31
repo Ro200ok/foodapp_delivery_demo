@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_event.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_state.dart';
-
-import 'package:food_app_test/repositories/phone_auth_repository.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_event.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_state.dart';
+import 'package:food_delivery_demo/repositories/phone_auth_repository.dart';
 
 class PhoneAuthBloc extends Bloc<PhoneAuthEvent, PhoneAuthState> {
   final PhoneAuthRepository phoneAuthRepository;

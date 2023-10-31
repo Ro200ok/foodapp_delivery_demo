@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:food_app_test/models/category/category.dart';
-import 'package:food_app_test/utils/constants.dart';
+import 'package:food_delivery_demo/models/category/category.dart';
+import 'package:food_delivery_demo/utils/constants.dart';
 
 class ProductsRepository {
   final _client = Dio();

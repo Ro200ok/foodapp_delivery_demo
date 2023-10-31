@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/router/app_paths.dart';
-import 'package:food_app_test/ui/components/scaffold_nested_navigation.dart';
-import 'package:food_app_test/ui/screens/cart_screen.dart';
-import 'package:food_app_test/ui/screens/menu_category_screen.dart';
-import 'package:food_app_test/ui/screens/phone_auth_page.dart';
-import 'package:food_app_test/ui/screens/splash_screen.dart';
-import 'package:food_app_test/ui/screens/test_auth_success_screen.dart';
+import 'package:food_delivery_demo/models/product/product.dart';
+import 'package:food_delivery_demo/router/app_paths.dart';
+import 'package:food_delivery_demo/ui/components/scaffold_nested_navigation.dart';
+import 'package:food_delivery_demo/ui/screens/cart_screen.dart';
+import 'package:food_delivery_demo/ui/screens/menu_category_screen.dart';
+import 'package:food_delivery_demo/ui/screens/phone_auth_page.dart';
+import 'package:food_delivery_demo/ui/screens/splash_screen.dart';
+import 'package:food_delivery_demo/ui/screens/test_auth_success_screen.dart';
 import 'package:go_router/go_router.dart';
-
 import '../ui/screens/menu_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();

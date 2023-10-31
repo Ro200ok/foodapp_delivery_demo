@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/cart/cart_bloc.dart';
-import 'package:food_app_test/generated/locale_keys.g.dart';
-import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/ui/components/red_rounded_button.dart';
+import 'package:food_delivery_demo/blocs/cart/cart_bloc.dart';
+import 'package:food_delivery_demo/generated/locale_keys.g.dart';
+import 'package:food_delivery_demo/models/product/product.dart';
+import 'package:food_delivery_demo/ui/components/red_rounded_button.dart';
 
 class DetailsProduct extends StatelessWidget {
   const DetailsProduct({super.key, required this.product});

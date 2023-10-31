@@ -1,4 +1,4 @@
-import 'package:food_app_test/generated/locale_keys.g.dart';
+import 'package:food_delivery_demo/generated/locale_keys.g.dart';
 
 abstract class AppConstants {
   static const promoPizzaPath = 'assets/images/jalapeno_pizza.png';

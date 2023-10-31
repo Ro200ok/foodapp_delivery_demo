@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_bloc.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_event.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_bloc.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_event.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 

@@ -1,4 +1,4 @@
-import 'package:food_app_test/models/product/product.dart';
+import 'package:food_delivery_demo/models/product/product.dart';
 import 'package:hive/hive.dart';
 
 abstract class ItfProductsDataSource {

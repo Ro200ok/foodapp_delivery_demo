@@ -2,11 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_app_test/di.dart';
-import 'package:food_app_test/firebase_options.dart';
-import 'package:food_app_test/generated/codegen_loader.g.dart';
-import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/router/router.dart';
+import 'package:food_delivery_demo/di.dart';
+import 'package:food_delivery_demo/firebase_options.dart';
+import 'package:food_delivery_demo/generated/codegen_loader.g.dart';
+import 'package:food_delivery_demo/models/product/product.dart';
+import 'package:food_delivery_demo/router/router.dart';
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {

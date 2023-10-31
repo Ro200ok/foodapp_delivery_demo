@@ -1,6 +1,6 @@
 {
-    "name": "food_app_test",
-    "short_name": "food_app_test",
+    "name": "food_delivery_demo",
+    "short_name": "food_delivery_demo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,8 +1,8 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_bloc.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_event.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_bloc.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_event.dart';
 
 class PhoneNumberWidget extends StatefulWidget {
   const PhoneNumberWidget({Key? key, required this.phoneNumberController})

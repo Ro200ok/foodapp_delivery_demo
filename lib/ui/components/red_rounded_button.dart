@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app_test/utils/app_colors.dart';
+import 'package:food_delivery_demo/utils/app_colors.dart';
 
 class RedRoundedButton extends StatelessWidget {
   const RedRoundedButton(

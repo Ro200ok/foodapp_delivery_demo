@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/cart/cart_bloc.dart';
-import 'package:food_app_test/generated/locale_keys.g.dart';
+import 'package:food_delivery_demo/blocs/cart/cart_bloc.dart';
+import 'package:food_delivery_demo/generated/locale_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 class ScaffoldWithNestedNavigation extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:food_app_test/models/product/product.dart';
+import 'package:food_delivery_demo/models/product/product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'category.freezed.dart';
 part 'category.g.dart';

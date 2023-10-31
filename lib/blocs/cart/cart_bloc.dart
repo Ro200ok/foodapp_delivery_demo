@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:food_app_test/models/cart_model.dart';
-import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/repositories/hive_cart_repository.dart';
+import 'package:food_delivery_demo/models/cart_model.dart';
+import 'package:food_delivery_demo/models/product/product.dart';
+import 'package:food_delivery_demo/repositories/hive_cart_repository.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

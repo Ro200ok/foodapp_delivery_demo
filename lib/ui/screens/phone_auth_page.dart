@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_bloc.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_state.dart';
-import 'package:food_app_test/router/app_paths.dart';
-import 'package:food_app_test/ui/screens/widgets/otp_widget.dart';
-import 'package:food_app_test/ui/screens/widgets/phone_number_field.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_bloc.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_state.dart';
+import 'package:food_delivery_demo/router/app_paths.dart';
+import 'package:food_delivery_demo/ui/screens/widgets/otp_widget.dart';
+import 'package:food_delivery_demo/ui/screens/widgets/phone_number_field.dart';
 import 'package:go_router/go_router.dart';
 
 class PhoneAuthPage extends StatefulWidget {

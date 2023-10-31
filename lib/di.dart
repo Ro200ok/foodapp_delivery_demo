@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/cart/cart_bloc.dart';
-import 'package:food_app_test/blocs/phone_auth/phone_auth_bloc.dart';
-import 'package:food_app_test/blocs/products_data/products_bloc.dart';
-import 'package:food_app_test/repositories/hive_cart_repository.dart';
-import 'package:food_app_test/repositories/phone_auth_repository.dart';
-import 'package:food_app_test/repositories/products_repository.dart';
+import 'package:food_delivery_demo/blocs/cart/cart_bloc.dart';
+import 'package:food_delivery_demo/blocs/phone_auth/phone_auth_bloc.dart';
+import 'package:food_delivery_demo/repositories/hive_cart_repository.dart';
+import 'package:food_delivery_demo/repositories/phone_auth_repository.dart';
+import 'package:food_delivery_demo/repositories/products_repository.dart';
+
+import 'blocs/products_data/products_bloc.dart';
 
 class AppLoader extends StatelessWidget {
   const AppLoader({super.key, required this.child});

@@ -1,5 +1,5 @@
-import 'package:food_app_test/models/product/product.dart';
-import 'package:food_app_test/core/itf_products_datasource.dart';
+import 'package:food_delivery_demo/core/itf_products_datasource.dart';
+import 'package:food_delivery_demo/models/product/product.dart';
 import 'package:hive/hive.dart';
 
 class HiveCartRepository extends ItfProductsDataSource {
