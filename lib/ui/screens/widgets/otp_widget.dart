@@ -70,8 +70,7 @@ class _OtpWidgetState extends State<OtpWidget> {
 
   void _verifyOtp({required BuildContext context, required String otpCode}) {
     context.read<PhoneAuthBloc>().add(VerifySentOtpEvent(
-        otpCode: widget.codeController.text,
-        verificationId: widget.verificationId));
+        otpCode: otpCode, verificationId: widget.verificationId));
     widget.codeController.clear();
   }
 }
