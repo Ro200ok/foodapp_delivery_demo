@@ -4,6 +4,9 @@ import 'package:food_app_test/router/app_paths.dart';
 import 'package:food_app_test/ui/components/scaffold_nested_navigation.dart';
 import 'package:food_app_test/ui/screens/cart_screen.dart';
 import 'package:food_app_test/ui/screens/menu_category_screen.dart';
+import 'package:food_app_test/ui/screens/phone_auth_page.dart';
+import 'package:food_app_test/ui/screens/splash_screen.dart';
+import 'package:food_app_test/ui/screens/test_auth_success_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../ui/screens/menu_screen.dart';
@@ -13,11 +16,19 @@ final _shellNavigatorFoodKey =
     GlobalKey<NavigatorState>(debugLabel: 'shellFood');
 final _shellNavigatorCartKey =
     GlobalKey<NavigatorState>(debugLabel: 'shellCart');
+final _shellNavigatorUserProfileKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shellUserProfile');
 
 final goRouter = GoRouter(
   initialLocation: AppPaths.menuScreen,
   navigatorKey: _rootNavigatorKey,
   routes: [
+    GoRoute(
+      path: AppPaths.splashScreen,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: SplashScreen(),
+      ),
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
@@ -56,6 +67,23 @@ final goRouter = GoRouter(
               path: AppPaths.cartScreen,
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: CartScreen(),
+              ),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorUserProfileKey,
+          routes: [
+            GoRoute(
+              path: AppPaths.phoneAuthPage,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: PhoneAuthPage(),
+              ),
+            ),
+            GoRoute(
+              path: AppPaths.authSuccess,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: TestAuthSuccessScreen(),
               ),
             ),
           ],

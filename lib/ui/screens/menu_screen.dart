@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/products_bloc.dart';
+import 'package:food_app_test/blocs/products_data/products_bloc.dart';
 import 'package:food_app_test/generated/locale_keys.g.dart';
 import 'package:food_app_test/ui/components/category_item.dart';
 import 'package:food_app_test/ui/components/promo_timer.dart';

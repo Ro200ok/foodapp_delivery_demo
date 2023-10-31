@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app_test/blocs/bloc/cart_bloc.dart';
+import 'package:food_app_test/blocs/cart/cart_bloc.dart';
 import 'package:food_app_test/models/product/product.dart';
 import 'package:food_app_test/utils/app_colors.dart';
 

@@ -44,6 +44,11 @@ dependencies:
   sqflite: ^2.3.0
   shared_preferences: ^2.2.2
   path_provider: ^2.1.1
+  firebase_auth: ^4.12.0
+  firebase_core: ^2.20.0
+  country_code_picker: ^3.0.0
+  otp_text_field: ^1.1.3
+  rive: ^0.12.1
   
   
 
@@ -68,6 +73,7 @@ flutter:
   assets:
     - assets/images/jalapeno_pizza.png
     - assets/translations/
+    - assets/animations/delivery.riv
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

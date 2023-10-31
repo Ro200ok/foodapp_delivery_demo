@@ -47,7 +47,6 @@ class _CategoryItemState extends State<CategoryItem>
   @override
   Widget build(BuildContext context) {
     final category = widget.category;
-    // final categorieName = category.category_name ?? '';
     final categoryName = widget.categoryName;
     return AnimatedBuilder(
         animation: _animation,
@@ -79,12 +78,13 @@ class _CategoryItemState extends State<CategoryItem>
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text(
-                              categoryName,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w700, fontSize: 18),
-                            )),
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            categoryName,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 18),
+                          ),
+                        ),
                       )
                     ],
                   )),
